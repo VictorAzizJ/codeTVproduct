@@ -1,0 +1,20 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Don't commit actual icon files if they're copyrighted
+# icons/*.png
+
+# Don't accidentally commit API keys in test files
+*.env
+config.local.js
