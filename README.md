@@ -1,216 +1,289 @@
-# 📚 Study Checkout - Chrome Extension
+# Shopping Debate - Chrome Extension
 
-Turn online shopping into a learning opportunity! Study Checkout is a Chrome extension that prompts you with educational quiz questions before allowing you to complete your purchases.
+Three AI personalities debate your purchase decisions before checkout. Make thoughtful choices, not impulsive ones.
 
-## 🎯 Features
+## The Personalities
 
-- **Automatic Checkout Detection**: Detects when you're on a checkout page across any e-commerce site
-- **AI-Generated Questions**: Uses OpenRouter API to generate personalized quiz questions
-- **Customizable Learning**: Choose from different subjects (Math, Science, History, etc.) and difficulty levels
-- **Study Mode**: Add custom prompts to study for specific topics or exams
-- **Beautiful UI**: Clean, modern interface that doesn't disrupt your shopping experience
+**The Enabler** - Finds genuine value and benefits, creates vivid scenarios of how the purchase improves your life
+**The Skeptic** - Raises practical questions, compares cost vs value, suggests alternatives
+**The Mediator** - Synthesizes both perspectives, asks insightful questions, guides your decision
 
-## 🚀 Installation
+## Features
+
+- **Real-Time AI Streaming**: Watch three personalities debate token-by-token (not simulated!)
+- **Automatic Checkout Detection**: Triggers on checkout pages across any e-commerce site
+- **Context-Aware Debates**: Each personality references actual product names and prices
+- **"Yes, And..." Improv Style**: The Mediator builds upon specific arguments from both sides
+- **Beautiful UI**: Gradient design with smooth animations
+- **Multiple AI Models**: Choose from Claude, GPT-4, GPT-3.5, and more
+
+## Quick Start
 
 ### 1. Get an OpenRouter API Key
 
 1. Visit [OpenRouter](https://openrouter.ai/keys)
-2. Sign up for an account
-3. Create a new API key
-4. Copy the API key (starts with `sk-or-...`)
+2. Sign up and create a new API key
+3. Copy the key (starts with `sk-or-...`)
+4. Free credits available for new users!
 
-### 2. Load the Extension in Chrome
+### 2. Install the Extension
 
-1. Open Chrome and navigate to `chrome://extensions/`
-2. Enable "Developer mode" (toggle in the top right corner)
-3. Click "Load unpacked"
-4. Select the folder containing this extension
-5. The extension should now appear in your extensions list
+```bash
+# Open Chrome and go to:
+chrome://extensions/
 
-### 3. Configure the Extension
+# 1. Enable "Developer mode" (top right)
+# 2. Click "Load unpacked"
+# 3. Select this extension folder
+```
 
-1. Click on the extension icon in your Chrome toolbar
-2. Click "Open Settings"
-3. Enter your OpenRouter API key
-4. Choose your preferred AI model (GPT-3.5 Turbo is recommended for speed and cost)
-5. Select your question type and difficulty level
-6. Click "Save Settings"
-
-### 4. Add Icons (Optional)
-
-For a polished look, add three icon files to the `icons/` directory:
-- `icon16.png` (16x16 pixels)
-- `icon48.png` (48x48 pixels)
-- `icon128.png` (128x128 pixels)
-
-See `icons/README.txt` for more details.
-
-## 🎮 How to Use
-
-1. **Shop as Normal**: Browse any e-commerce website
-2. **Proceed to Checkout**: When you reach a checkout page, the extension will automatically detect it
-3. **Answer the Question**: A quiz modal will appear, blocking the checkout
-4. **Get It Right**: Answer correctly to unlock checkout and complete your purchase
-5. **Learn Something New**: Even if shopping wasn't productive, at least you learned something!
-
-## ⚙️ Configuration Options
-
-### Question Types
-- **General Knowledge**: Broad range of topics
-- **Fun Trivia**: Entertainment and pop culture
-- **Mathematics**: Math problems and equations
-- **Science**: Biology, Chemistry, and Physics
-- **History**: Historical events and figures
-- **Geography**: Countries, capitals, and landmarks
-- **Language**: Vocabulary and grammar
-
-### Difficulty Levels
-- **Easy**: Simple questions with straightforward answers
-- **Medium**: Moderate difficulty (default)
-- **Hard**: Challenging questions requiring deeper knowledge
-
-### Custom Prompts
-Want to study for a specific exam or topic? Add a custom prompt like:
-- "Ask me Spanish vocabulary words for beginners"
-- "Quiz me on World War 2 history"
-- "Give me Python programming questions"
-- "Test my knowledge of human anatomy"
-
-### AI Models
-Choose from various models on OpenRouter:
-- **GPT-3.5 Turbo**: Fast, affordable, great for most use cases (recommended)
-- **GPT-4**: Most accurate, higher cost
-- **Claude 3 Haiku**: Fast and efficient
-- **Claude 3 Sonnet**: Balanced performance
-- **Llama 3 8B**: Budget-friendly option
-
-Check [OpenRouter pricing](https://openrouter.ai/docs#models) for cost details.
-
-## 🧪 Testing
-
-Want to test the extension without waiting for a checkout page?
+### 3. Configure Settings
 
 1. Click the extension icon
+2. Click "Open Settings"
+3. Paste your OpenRouter API key
+4. Choose AI model (Claude 3 Haiku recommended)
+5. Save settings
+
+### 4. Shop and Debate!
+
+Visit any checkout page - the debate will start automatically!
+
+## How It Works
+
+```
+You reach checkout
+    ↓
+Modal appears with product context
+    ↓
+Enabler streams their argument
+    ↓
+Skeptic streams their counterpoint
+    ↓
+Mediator synthesizes both views
+    ↓
+You decide: Proceed or Reconsider
+```
+
+## Testing
+
+### Test Page Included
+
+Open `test-checkout.html` in Chrome to see the extension in action!
+
+### Manual Trigger
+
+1. Click extension icon
 2. Click "Test on This Page"
-3. The quiz modal will appear immediately
+3. Debate starts immediately
 
-## 📁 Project Structure
+## Configuration
+
+### AI Models
+
+| Model | Speed | Quality | Cost | Best For |
+|-------|-------|---------|------|----------|
+| Claude 3 Haiku | Fast | Good | Low | Recommended |
+| Claude 3 Sonnet | Medium | Great | Medium | Balanced |
+| GPT-3.5 Turbo | Fast | Good | Low | Fast & Cheap |
+| GPT-4 | Slow | Excellent | High | Maximum Quality |
+| Llama 3 8B | Medium | Good | Low | Budget |
+
+Check [OpenRouter pricing](https://openrouter.ai/models) for current rates.
+
+## Project Structure
 
 ```
-study-checkout/
-├── manifest.json          # Extension configuration
-├── content.js            # Detects checkout pages and shows quiz
-├── background.js         # Handles OpenRouter API calls
-├── quiz-modal.css        # Styling for the quiz interface
-├── options.html          # Settings page UI
-├── options.js            # Settings page logic
-├── popup.html            # Extension popup UI
-├── popup.js              # Extension popup logic
-├── icons/                # Extension icons
-│   └── README.txt        # Icon requirements
-└── README.md             # This file
+shopping-debate/
+├── dist/
+│   └── background.bundle.js      # 545KB bundled with OpenRouter SDK (Beta)
+├── src/
+│   ├── background/
+│   │   └── index.js              # Streaming orchestration
+│   ├── content/
+│   │   ├── index.js              # Debate modal + message handling
+│   │   ├── checkout.js           # Checkout detection logic
+│   │   └── debate-modal.css      # Gradient styling
+│   ├── options/
+│   │   ├── view.html             # Settings page
+│   │   └── controller.js         # Settings logic
+│   └── popup/
+│       ├── view.html             # Extension popup
+│       └── controller.js         # Popup logic
+├── manifest.json                 # Extension config
+├── package.json                  # Build scripts
+├── test-checkout.html            # Test page
+└── README.md                     # This file
 ```
 
-## 🔧 Development
+## Development
 
-### Adding New Question Types
+### Build Commands
 
-Edit `background.js` and add a new case to the `buildPrompt()` function:
+```bash
+# Install dependencies
+npm install
+
+# Build for production
+npm run build
+
+# Watch mode (auto-rebuild)
+npm run watch
+```
+
+### Workflow
+
+1. Make changes to `src/background/index.js`
+2. Run `npm run build` (or use watch mode)
+3. Go to `chrome://extensions/` and click "Reload"
+4. Test on checkout page or test-checkout.html
+
+### Customizing Prompts
+
+Edit the prompt builders in `src/background/index.js`:
 
 ```javascript
-case 'your-topic':
-  basePrompt = 'Generate a question about your topic';
-  break;
-```
+function buildEnablerPrompt(productContext) {
+  // Customize Enabler's personality and approach
+}
 
-Then add the option to `options.html`:
+function buildSkepticPrompt(productContext) {
+  // Customize Skeptic's arguments
+}
 
-```html
-<option value="your-topic">Your Topic</option>
+function buildMediatorPrompt(productContext, previousResponses) {
+  // Customize how Mediator synthesizes perspectives
+}
 ```
 
 ### Customizing Checkout Detection
 
-Edit the `CHECKOUT_PATTERNS` array in `content.js` to add more URL patterns:
+Edit `CHECKOUT_PATTERNS` in `src/content/checkout.js`:
 
 ```javascript
 const CHECKOUT_PATTERNS = [
   /checkout/i,
-  /your-pattern/i,
-  // ... more patterns
+  /your-custom-pattern/i,
+  // Add more patterns
 ];
 ```
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
-### Extension Doesn't Detect Checkout Pages
+### Modal Doesn't Appear
 
-- The checkout detection looks for common patterns in URLs and page content
-- You can test the extension manually using the "Test on This Page" button
-- Consider adding site-specific patterns to `CHECKOUT_PATTERNS` in `content.js`
+- Check extension is enabled at `chrome://extensions/`
+- Verify URL contains checkout keywords
+- Check DevTools console (F12) for errors
+- Try "Test on This Page" button
 
-### API Key Errors
+### Streaming Not Working
 
-- Ensure your API key starts with `sk-or-`
-- Check that you have credits in your OpenRouter account
-- Verify the API key is correctly saved in settings
+- Verify API key starts with `sk-or-`
+- Check OpenRouter credits at dashboard
+- Test with different AI model
+- Check network tab for streaming response
 
-### Questions Not Loading
+### Extension Loads But Settings Don't Save
 
-- Check your internet connection
-- Verify your OpenRouter API key is valid
-- Check the Chrome DevTools console for error messages (F12)
-- Try a different AI model in settings
+- Check Chrome storage permissions in manifest
+- Try resetting to defaults
+- Check DevTools console for errors
 
-### Modal Not Appearing
+### Text Appears All at Once (Not Streaming)
 
-- Check that the extension is enabled in `chrome://extensions/`
-- Try reloading the page
-- Check for JavaScript errors in the console (F12)
+This shouldn't happen! If it does:
+- Rebuild: `npm run build`
+- Reload extension
+- Check that OpenRouter SDK is in bundle
 
-## 💡 Tips
+## Advanced Tips
 
-- **Set Difficulty Based on Goals**: Use "Easy" for casual learning, "Hard" for serious study
-- **Use Custom Prompts for Exams**: Studying for a test? Add a custom prompt with your exam topics
-- **Try Different Models**: Each AI model has different strengths - experiment to find your favorite
-- **Budget Conscious?**: Use GPT-3.5 Turbo or Llama 3 for lower costs
-- **Track Your Spending**: Monitor your OpenRouter dashboard to see API usage
+### Reducing API Costs
 
-## 🤝 Contributing
+- Use Claude 3 Haiku or GPT-3.5 Turbo
+- Lower `max_tokens` in `src/background/index.js`
+- Add debate cooldown to prevent rapid triggers
 
-This is your project! Feel free to:
-- Add new features
-- Improve checkout detection
-- Add more question types
-- Enhance the UI/UX
-- Fix bugs
+### Better Product Context
 
-## 📄 License
+Enhance `extractProductContext()` in `src/content/index.js`:
+- Add more price selectors
+- Parse product descriptions
+- Extract review ratings
+- Calculate price per unit
 
-This project is open source and available for personal use.
+### Adding a Fourth Personality
 
-## 🎓 Use Cases
+1. Add streaming call in `handleStreamingDebate()`
+2. Create prompt builder function
+3. Add personality card HTML in `createDebateModal()`
+4. Update CSS with new personality colors
 
-- **Students**: Study while treating yourself to online shopping
-- **Language Learners**: Practice vocabulary before impulse purchases
-- **Impulse Control**: Add friction to checkout to reduce impulsive buying
-- **Lifelong Learners**: Turn every purchase into a micro-learning moment
-- **Test Prep**: Custom prompts for SAT, GRE, or certification exams
+## Use Cases
 
-## 🔒 Privacy
+**Impulse Control**
+Add meaningful friction to checkout decisions
 
-- Your API key is stored locally in Chrome's sync storage
-- No data is sent anywhere except to OpenRouter for question generation
-- The extension only activates on checkout pages
+**Budget Management**
+Second-guess purchases before committing
+
+**Decision Training**
+Learn to consider multiple perspectives
+
+**Mindful Shopping**
+Slow down and think before buying
+
+**Value Assessment**
+Practice evaluating cost vs benefit
+
+## Privacy & Security
+
+- API key stored in Chrome's encrypted storage
+- No data sent except to OpenRouter
 - No tracking or analytics
+- No data collected or stored
+- Open source - review the code!
 
-## 📞 Support
+## Future Enhancements
 
-Having issues? Here are some resources:
+Ideas for v2.0:
+
+- **Debate History**: Track past decisions and outcomes
+- **Learning Mode**: Extension learns your values over time
+- **Budget Tracking**: Integration with financial goals
+- **Social Sharing**: Share interesting debates
+- **A/B Testing**: Measure which personality is most persuasive
+- **Voice Mode**: Hear the debate instead of reading it
+- **Custom Personalities**: Create your own AI advisors
+
+## Contributing
+
+Feel free to:
+- Fork and improve
+- Submit pull requests
+- Report bugs
+- Suggest features
+- Share your experiences
+
+## License
+
+MIT License - Free for personal and commercial use
+
+## Acknowledgments
+
+Built with:
+- [OpenRouter SDK (Beta)](https://openrouter.ai/docs/quickstart) - Official OpenRouter SDK
+- [OpenRouter API](https://openrouter.ai) - Multi-model AI access
+- [esbuild](https://esbuild.github.io/) - Lightning-fast bundling
+
+## Support
+
+Need help?
 - Check the Troubleshooting section above
-- Review [OpenRouter Documentation](https://openrouter.ai/docs)
-- Check Chrome Extension Developer docs
+- Review [OpenRouter docs](https://openrouter.ai/docs)
+- Open an issue on GitHub
 
 ---
 
-Made with ❤️ for learners who can't stop shopping (or shoppers who can't stop learning)
+**Built for thoughtful shoppers who want to make better decisions**

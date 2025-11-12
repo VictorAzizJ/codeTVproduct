@@ -1,4 +1,4 @@
-// Options page JavaScript
+// Shopping Debate Options Controller
 
 // Load saved settings
 document.addEventListener('DOMContentLoaded', loadSettings);
@@ -14,18 +14,12 @@ async function loadSettings() {
   try {
     const settings = await chrome.storage.sync.get({
       apiKey: '',
-      model: 'openai/gpt-3.5-turbo',
-      questionType: 'general',
-      difficulty: 'medium',
-      customPrompt: ''
+      model: 'anthropic/claude-3-haiku'
     });
 
     // Populate form fields
     document.getElementById('apiKey').value = settings.apiKey;
     document.getElementById('model').value = settings.model;
-    document.getElementById('questionType').value = settings.questionType;
-    document.getElementById('difficulty').value = settings.difficulty;
-    document.getElementById('customPrompt').value = settings.customPrompt;
 
   } catch (error) {
     showStatus('Error loading settings: ' + error.message, 'error');
@@ -38,9 +32,6 @@ async function saveSettings(e) {
 
   const apiKey = document.getElementById('apiKey').value.trim();
   const model = document.getElementById('model').value;
-  const questionType = document.getElementById('questionType').value;
-  const difficulty = document.getElementById('difficulty').value;
-  const customPrompt = document.getElementById('customPrompt').value.trim();
 
   // Validate API key
   if (!apiKey) {
@@ -57,13 +48,10 @@ async function saveSettings(e) {
     // Save to Chrome storage
     await chrome.storage.sync.set({
       apiKey,
-      model,
-      questionType,
-      difficulty,
-      customPrompt
+      model
     });
 
-    showStatus('Settings saved successfully!', 'success');
+    showStatus('Settings saved successfully! Your debates are ready.', 'success');
 
     // Auto-hide success message after 3 seconds
     setTimeout(() => {
@@ -84,10 +72,7 @@ async function resetToDefaults() {
   try {
     await chrome.storage.sync.set({
       apiKey: '',
-      model: 'openai/gpt-3.5-turbo',
-      questionType: 'general',
-      difficulty: 'medium',
-      customPrompt: ''
+      model: 'anthropic/claude-3-haiku'
     });
 
     // Reload form
@@ -122,6 +107,8 @@ document.getElementById('apiKey').addEventListener('input', (e) => {
   const value = e.target.value;
   if (value && !value.startsWith('sk-or-')) {
     e.target.style.borderColor = '#dc3545';
+  } else if (value) {
+    e.target.style.borderColor = '#28a745';
   } else {
     e.target.style.borderColor = '#e0e0e0';
   }

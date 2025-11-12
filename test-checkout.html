@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Test Page for Shopping Debate</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
+    .product-info {
+      margin: 30px 0;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+    .price {
+      font-size: 32px;
+      color: #667eea;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .checkout-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .checkout-btn:hover {
+      opacity: 0.9;
+    }
+    .instructions {
+      margin-top: 40px;
+      padding: 20px;
+      background: #e8f4f8;
+      border-left: 4px solid #3498db;
+      border-radius: 4px;
+    }
+    .instructions h3 {
+      margin-top: 0;
+      color: #2980b9;
+    }
+    .instructions ol {
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Checkout - Complete Your Order</h1>
+
+    <div class="product-info">
+      <h2>Premium Wireless Headphones</h2>
+      <p>Experience crystal-clear audio with our top-of-the-line wireless headphones featuring active noise cancellation, 30-hour battery life, and premium comfort.</p>
+
+      <div class="price">$299.99</div>
+
+      <ul>
+        <li>Active Noise Cancellation</li>
+        <li>30-Hour Battery Life</li>
+        <li>Premium Comfort Design</li>
+        <li>Bluetooth 5.0</li>
+        <li>1-Year Warranty</li>
+      </ul>
+    </div>
+
+    <button class="checkout-btn" onclick="alert('This is a test page for the Shopping Debate extension')">
+      Complete Purchase →
+    </button>
+
+    <div class="instructions">
+      <h3>Testing Instructions:</h3>
+      <ol>
+        <li>Load your extension in Chrome (<code>chrome://extensions/</code>)</li>
+        <li>Enable "Developer mode" and click "Load unpacked"</li>
+        <li>Select your extension directory</li>
+        <li>Configure your OpenRouter API key in the extension settings</li>
+        <li>Open this test page in Chrome</li>
+        <li>The debate modal should appear automatically (the URL contains "checkout")</li>
+        <li>Watch the three AI personalities stream their responses in real-time!</li>
+      </ol>
+
+      <p><strong>Note:</strong> This page is detected as a checkout page because its title contains "Checkout" and its URL contains "checkout".</p>
+    </div>
+  </div>
+</body>
+</html>

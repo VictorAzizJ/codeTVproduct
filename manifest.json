@@ -1,31 +1,28 @@
 {
   "manifest_version": 3,
-  "name": "Study Checkout",
+  "name": "Shopping Debate",
   "version": "1.0.0",
-  "description": "Turn shopping into a learning opportunity...",
+  "description": "Three AI personalities debate your purchase decisions",
   "permissions": ["storage", "activeTab"],
   "host_permissions": ["https://openrouter.ai/*"],
   "background": {
-    "service_worker": "dist/background.bundle.js"
+    "service_worker": "dist/background.bundle.js",
+    "type": "module"
   },
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "js": ["dist/content.bundle.js"],
-    "css": ["src/content/quiz/styles.css"],
+    "css": ["src/content/debate-modal.css"],
     "run_at": "document_idle"
   }],
   "options_page": "src/options/view.html",
   "action": {
     "default_popup": "src/popup/view.html",
-    "default_title": "Study Checkout Settings"
+    "default_title": "Shopping Debate Settings"
   },
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  },
-  "web_accessible_resources": [{
-    "resources": ["src/content/quiz/view.html"],
-    "matches": ["<all_urls>"]
-  }]
+  }
 }

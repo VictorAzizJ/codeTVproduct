@@ -1,6 +1,7 @@
 # OS files
 .DS_Store
 Thumbs.db
+.claude
 
 # Editor files
 .vscode/

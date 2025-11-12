@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Study Checkout Settings</title>
+  <title>Shopping Debate Settings</title>
   <style>
     * {
       margin: 0;
@@ -44,6 +44,23 @@
       font-size: 16px;
     }
 
+    .personalities {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .personalities span {
+      color: rgba(255, 255, 255, 0.9);
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
     .content {
       padding: 40px;
     }
@@ -74,8 +91,7 @@
 
     input[type="text"],
     input[type="password"],
-    select,
-    textarea {
+    select {
       width: 100%;
       padding: 12px;
       border: 2px solid #e0e0e0;
@@ -86,15 +102,9 @@
     }
 
     input:focus,
-    select:focus,
-    textarea:focus {
+    select:focus {
       outline: none;
       border-color: #667eea;
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 100px;
     }
 
     .hint {
@@ -110,6 +120,7 @@
       padding: 15px;
       border-radius: 8px;
       margin-top: 10px;
+      font-size: 14px;
     }
 
     .api-key-info a {
@@ -120,6 +131,22 @@
 
     .api-key-info a:hover {
       text-decoration: underline;
+    }
+
+    .info-box {
+      background: #fff8e6;
+      border-left: 4px solid #ffd700;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .info-box strong {
+      color: #333;
+      display: block;
+      margin-bottom: 8px;
     }
 
     .button-group {
@@ -189,78 +216,58 @@
       color: #721c24;
       border-left: 4px solid #dc3545;
     }
-
-    .model-info {
-      font-size: 12px;
-      color: #888;
-      margin-top: 5px;
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>📚 Study Checkout Settings</h1>
-      <p>Customize your learning experience while shopping</p>
+      <h1>Shopping Debate Settings</h1>
+      <p>Configure your AI debate experience</p>
+      <div class="personalities">
+        <span title="The Enabler">Enabler</span>
+        <span title="The Skeptic">Skeptic</span>
+        <span title="The Mediator">Mediator</span>
+      </div>
     </div>
 
     <div class="content">
       <form id="settings-form">
         <!-- API Key Section -->
         <div class="section">
-          <h2>🔑 API Configuration</h2>
+          <h2>API Configuration</h2>
           <div class="form-group">
             <label for="apiKey">OpenRouter API Key *</label>
             <input type="password" id="apiKey" name="apiKey" placeholder="sk-or-v1-..." required>
-            <span class="hint">Your API key is stored securely in Chrome's storage</span>
+            <span class="hint">Your API key is stored securely in Chrome's encrypted storage</span>
             <div class="api-key-info">
-              Don't have an API key? Get one at <a href="https://openrouter.ai/keys" target="_blank">OpenRouter</a>
+              Don't have an API key? Get one at <a href="https://openrouter.ai/keys" target="_blank">OpenRouter</a> (free credits available!)
             </div>
           </div>
 
           <div class="form-group">
             <label for="model">AI Model</label>
             <select id="model" name="model">
-              <option value="openai/gpt-3.5-turbo">GPT-3.5 Turbo (Fast & Affordable)</option>
-              <option value="openai/gpt-4">GPT-4 (Most Accurate)</option>
-              <option value="anthropic/claude-3-haiku">Claude 3 Haiku (Fast)</option>
+              <option value="anthropic/claude-3-haiku">Claude 3 Haiku (Fast & Recommended)</option>
               <option value="anthropic/claude-3-sonnet">Claude 3 Sonnet (Balanced)</option>
+              <option value="openai/gpt-3.5-turbo">GPT-3.5 Turbo (Fast)</option>
+              <option value="openai/gpt-4">GPT-4 (Most Accurate)</option>
               <option value="meta-llama/llama-3-8b-instruct">Llama 3 8B (Budget)</option>
             </select>
-            <span class="hint">Different models have different costs - check OpenRouter pricing</span>
+            <span class="hint">Different models have different costs - check <a href="https://openrouter.ai/models" target="_blank" style="color: #667eea;">OpenRouter pricing</a></span>
           </div>
         </div>
 
-        <!-- Question Settings -->
-        <div class="section">
-          <h2>📝 Question Preferences</h2>
-          <div class="form-group">
-            <label for="questionType">Question Type</label>
-            <select id="questionType" name="questionType">
-              <option value="general">General Knowledge</option>
-              <option value="trivia">Fun Trivia</option>
-              <option value="math">Mathematics</option>
-              <option value="science">Science</option>
-              <option value="history">History</option>
-              <option value="geography">Geography</option>
-              <option value="language">Language & Vocabulary</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="difficulty">Difficulty Level</label>
-            <select id="difficulty" name="difficulty">
-              <option value="easy">Easy</option>
-              <option value="medium">Medium</option>
-              <option value="hard">Hard</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="customPrompt">Custom Prompt (Optional)</label>
-            <textarea id="customPrompt" name="customPrompt" placeholder="E.g., 'Ask me Spanish vocabulary words' or 'Quiz me on my biology exam topics'"></textarea>
-            <span class="hint">Leave blank to use the question type above. Custom prompts override question type.</span>
-          </div>
+        <div class="info-box">
+          <strong>How Shopping Debate Works:</strong>
+          When you reach a checkout page, three AI personalities will debate your purchase:
+          <br><br>
+          <strong>The Enabler</strong> - Highlights genuine benefits and value
+          <br>
+          <strong>The Skeptic</strong> - Raises practical concerns and alternatives
+          <br>
+          <strong>The Mediator</strong> - Synthesizes both perspectives and asks insightful questions
+          <br><br>
+          After the debate, you decide whether to proceed or reconsider your purchase.
         </div>
 
         <div class="button-group">
@@ -273,6 +280,6 @@
     </div>
   </div>
 
-  <script src="../../dist/options.bundle.js"></script>
+  <script src="../options/controller.js"></script>
 </body>
 </html>

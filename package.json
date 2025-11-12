@@ -1,5 +1,17 @@
 {
+  "name": "shopping-debate",
+  "version": "1.0.0",
+  "description": "AI-powered shopping debate extension",
+  "scripts": {
+    "build": "npm run build:background && npm run build:content",
+    "build:background": "esbuild src/background/index.js --bundle --outfile=dist/background.bundle.js --platform=browser --target=chrome90 --format=esm",
+    "build:content": "esbuild src/content/index.js --bundle --outfile=dist/content.bundle.js --platform=browser --target=chrome90 --format=iife",
+    "watch": "npm run watch:background & npm run watch:content",
+    "watch:background": "esbuild src/background/index.js --bundle --outfile=dist/background.bundle.js --platform=browser --target=chrome90 --format=esm --watch",
+    "watch:content": "esbuild src/content/index.js --bundle --outfile=dist/content.bundle.js --platform=browser --target=chrome90 --format=iife --watch"
+  },
   "dependencies": {
+    "@openrouter/sdk": "^0.1.10",
     "dotenv": "^17.2.3"
   },
   "devDependencies": {
@@ -7,6 +19,7 @@
     "@babel/preset-env": "^7.28.5",
     "babel-loader": "^10.0.0",
     "dotenv-webpack": "^8.1.1",
+    "esbuild": "^0.27.0",
     "webpack-cli": "^6.0.1"
   }
 }
