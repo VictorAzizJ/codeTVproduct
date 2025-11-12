@@ -16,5 +16,5 @@ Thumbs.db
 # icons/*.png
 
 # Don't accidentally commit API keys in test files
-*.env
+.env
 config.local.js
